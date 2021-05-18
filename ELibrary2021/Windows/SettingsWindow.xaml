@@ -1,0 +1,45 @@
+﻿<Window x:Class="ELibrary2021.Windows.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ELibrary2021.Windows"
+        xmlns:local1="clr-namespace:ELibrary2021.Uc"
+        mc:Ignorable="d"
+        Title="الضبط" Height="300" Width="600" FlowDirection="RightToLeft" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="المستخدمين" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+        <ListView x:Name="lstUsers" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" BorderThickness="0" Margin="5">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="اسم المستخدم" Width="140" DisplayMemberBinding="{Binding Username}" />
+                    <GridViewColumn Header="كلمة المرور" Width="150" DisplayMemberBinding="{Binding password}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="btnEdit"   Content=" تعديل كلمة المرور " MinHeight="30" MinWidth="75" Margin="5 0 5 0" Click="btnEdit_Click"/>
+            <Button x:Name="btnAdd"    Content=" اضافة مستخدم جديد " MinHeight="30" MinWidth="75" Margin="5 0 5 0" Click="btnAdd_Click"/>
+        </StackPanel>
+        
+        <StackPanel x:Name="spEditPass" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Height="140" Visibility="Collapsed" >
+            <local1:editUserPassword x:Name="editPassUc" Height="140" />
+        </StackPanel>
+
+        <StackPanel x:Name="spAddNewUser" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Height="140" Visibility="Collapsed" >
+            <local1:AddUser x:Name="addUserUc" Height="140" />
+        </StackPanel>
+
+
+    </Grid>
+</Window>

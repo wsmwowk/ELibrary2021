@@ -1,0 +1,268 @@
+﻿<UserControl x:Class="ELibrary2021.Uc.GiveAndTake"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="800" FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="#FFB09151"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TabControl x:Name="TabGiveAndTakePages" >
+            <TabItem Header="اعارة" >
+                <Grid Background="#FFF1F1F1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinWidth="300" Text="أعارة كتاب" FontSize="20" FontWeight="ExtraLight" Padding="10,20,0,0" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="0 0 0 0"  VerticalAlignment="Center" HorizontalAlignment="Center"  Text="اسم المستعير" FontSize="16" FontWeight="ExtraLight"  />
+                    <TextBox x:Name="txtTakerName" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Template="{StaticResource TextBoxBaseControlTemplate}" Background="White"  HorizontalContentAlignment="Left" MinHeight="30" MinWidth="300" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="0 0 0 0"  VerticalAlignment="Center" HorizontalAlignment="Center"  Text="رقم الهاتف" FontSize="16" FontWeight="ExtraLight"  />
+                    <TextBox x:Name="txtTakerPhone" PreviewTextInput="NumberValidationTextBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Template="{StaticResource TextBoxBaseControlTemplate}" Background="White"  HorizontalContentAlignment="Left" MinHeight="30" MinWidth="300" />
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="0 0 0 0"  VerticalAlignment="Center" HorizontalAlignment="Center"  Text="الكتاب" FontSize="16" FontWeight="ExtraLight"  />
+                    <ComboBox x:Name="cmboBooksList" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  HorizontalContentAlignment="Left" MinHeight="30" MinWidth="300" SelectionChanged="cmboBooksList_SelectionChanged" />
+                    <TextBlock x:Name="txtSelectedClasses" Grid.Row="3" Grid.Column="1" Margin="305,0,0,0"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" FontSize="12" FontWeight="ExtraLight"  />
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="0 0 0 0"  VerticalAlignment="Center" HorizontalAlignment="Center"  Text="المدة" FontSize="16" FontWeight="ExtraLight"  />
+                    <TextBox x:Name="txtPeriod" Grid.Row="4" Grid.Column="1" PreviewTextInput="NumberValidationTextBox" VerticalAlignment="Center" HorizontalAlignment="Left" Template="{StaticResource TextBoxBaseControlTemplate}" Background="White"  HorizontalContentAlignment="Left" MinHeight="30" MinWidth="100" />
+                    <TextBlock Grid.Row="4" Grid.Column="1" Margin="110 0 0 0"  VerticalAlignment="Center" HorizontalAlignment="Left"  Text="أيام" FontSize="16" FontWeight="ExtraLight"  />
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Margin="0 0 0 0"  VerticalAlignment="Center" HorizontalAlignment="Center"  Text="التاريخ" FontSize="16" FontWeight="ExtraLight"  />
+                    <DatePicker x:Name="txtDate" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  HorizontalContentAlignment="Left" MinHeight="30" MinWidth="105" FlowDirection="LeftToRight" Text="ygyg" Padding="8,8,8,8" AutomationProperties.HelpText="اختيار تاريخ التسليم" />
+
+                    <Border  BorderBrush="#FFB09151" BorderThickness="1" CornerRadius="5" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="35" MinWidth="150">
+                        <Button x:Name="btnGive" Margin="0 0 0 0"  Content="أعارة"  Padding="0 0 55 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" BorderBrush="{x:Null}" Click="btnGive_Click" >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Opacity" Value="0.5" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Background>
+                                <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/ELibrary2021;component/Res/Gbooks.png">
+                                    <ImageBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform X="0.09" Y="0.25"/>
+                                        </TransformGroup>
+                                    </ImageBrush.RelativeTransform>
+                                    <ImageBrush.Transform>
+                                        <TransformGroup>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform X="15"/>
+                                            <TranslateTransform Y="-2"/>
+                                        </TransformGroup>
+                                    </ImageBrush.Transform>
+                                </ImageBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="استلام" IsSelected="True">
+                <Grid Background="#FFF1F1F1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Margin="10,0,0,10" MinWidth="300" Text="قائمة الكتب المعارة" FontSize="20" FontWeight="Normal" Padding="10,10,0,0" FontFamily="Dubai Light" />
+
+
+                    <StackPanel Orientation="Vertical" Margin="5,45,5,5" Grid.RowSpan="2">
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" MinHeight="40" MinWidth="100" Margin="0 0 0 0">
+                            <TextBox x:Name="txtSearchBook"  VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150" MinHeight="30"/>
+                            <Button x:Name="btnSearchTaker" Style="{StaticResource MyButton}" VerticalAlignment="Center" HorizontalAlignment="Center" MinHeight="35" MinWidth="35" BorderBrush="{x:Null}" Click="btnSearchTaker_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/ELibrary2021;component/Res/Search.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+                        <DataGrid x:Name="dgShow" HorizontalAlignment="Center" CanUserAddRows="False" AutoGenerateColumns="False" GridLinesVisibility="All" SelectionMode="Single" Background="White" Width="784" VerticalScrollBarVisibility="Auto" Height="280">
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Background" Value="#FED06F"/>
+                                    <Setter Property="Foreground" Value="#111111"/>
+                                    <Setter Property="Height" Value="30"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Height" Value="25" />
+                                    <Setter Property="FontSize" Value="10" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFFFCD42"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="id" Visibility="Hidden" Binding="{Binding id}" />
+                                <DataGridTextColumn Header="اسم المستعير" Binding="{Binding TakerName}" Width="120" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="رقم الهاتف"       Binding="{Binding TakerPhone}" Width="120" IsReadOnly="True" />
+                                <DataGridTextColumn Header="اسم الكتاب"    Binding="{Binding BookName}" Width="120"  IsReadOnly="True" />
+                                <DataGridTextColumn Header="الفئة"    Binding="{Binding BookClass}" Width="120"  IsReadOnly="True" />
+                                <DataGridTextColumn Header="مدة الأعارة (بالأيام)"    Binding="{Binding periodInDays}" Width="120" IsReadOnly="True" />
+                                <DataGridTextColumn Header="تاريخ الأعارة"      Binding="{Binding TakedDate}" Width="100" IsReadOnly="True" />
+                                <DataGridTemplateColumn Width="*" Header="أسترداد" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="btnReturnBook" BorderThickness="0" Style="{StaticResource MyButton}" Click="btnReturnBook_Click">
+                                                <Button.Background>
+                                                    <ImageBrush ImageSource="/ELibrary2021;component/Res/Rbooks.png" Stretch="Uniform"/>
+                                                </Button.Background>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <Button x:Name="btnReset" Grid.Row="1" Margin="0 0 0 20" Style="{StaticResource MyButton}"  Content="اعادة ضبط" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinHeight="35" MinWidth="150" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="btnReset_Click" Visibility="Collapsed">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Res/ResetClassOrSearch.png">
+                                <ImageBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="0.1" Y="0.4"/>
+                                    </TransformGroup>
+                                </ImageBrush.RelativeTransform>
+                                <ImageBrush.Transform>
+                                    <TransformGroup>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="0"/>
+                                        <TranslateTransform Y="-5"/>
+                                    </TransformGroup>
+                                </ImageBrush.Transform>
+                            </ImageBrush>
+                        </Button.Background>
+                    </Button>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="الكتب المسترجعة">
+                <Grid Background="#FFF1F1F1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Margin="10,0,0,10" MinWidth="300" Text="قائمة الكتب المسترجعة" FontSize="20" FontWeight="Normal" Padding="10,10,0,0" FontFamily="Dubai Light" />
+
+
+                    <StackPanel Orientation="Vertical" Margin="5,45,5,5" Grid.RowSpan="2">
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" MinHeight="40" MinWidth="100" Margin="0 0 0 0">
+                            <TextBox x:Name="txtSearchReturnedBook"  VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="150" MinHeight="30"/>
+                            <Button x:Name="btnSearchReturnedTaker" Style="{StaticResource MyButton}" VerticalAlignment="Center" HorizontalAlignment="Center" MinHeight="35" MinWidth="35" BorderBrush="{x:Null}" Click="btnSearchReturnedTaker_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/ELibrary2021;component/Res/Search.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+                        <DataGrid x:Name="dgShowReturner" HorizontalAlignment="Center" CanUserAddRows="False" AutoGenerateColumns="False" GridLinesVisibility="All" SelectionMode="Single" Background="White" Width="784" VerticalScrollBarVisibility="Auto" Height="280">
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Background" Value="#FED06F"/>
+                                    <Setter Property="Foreground" Value="#111111"/>
+                                    <Setter Property="Height" Value="30"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Height" Value="25" />
+                                    <Setter Property="FontSize" Value="10" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFFFCD42"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="id" Visibility="Hidden" Binding="{Binding id}" />
+                                <DataGridTextColumn Header="اسم المستعير" Binding="{Binding takerName}" Width="196" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="اسم الكتاب"    Binding="{Binding BookName}" Width="196"  IsReadOnly="True" />
+                                <DataGridTextColumn Header="نسبة التأخير (بالأيام)"    Binding="{Binding period}" Width="196" IsReadOnly="True" />
+                                <DataGridTextColumn Header="تاريخ الأسترداد" Binding="{Binding ReturnDate}" Width="196" IsReadOnly="True" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <Button x:Name="btnResetReturnerSearch" Grid.Row="1" Margin="0 0 0 20" Style="{StaticResource MyButton}"  Content="اعادة ضبط" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinHeight="35" MinWidth="150" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="btnResetReturnerSearch_Click" Visibility="Collapsed">
+                        <Button.Background>
+                            <ImageBrush AlignmentX="Left" Stretch="Uniform" ImageSource="/Res/ResetClassOrSearch.png">
+                                <ImageBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="0.1" Y="0.4"/>
+                                    </TransformGroup>
+                                </ImageBrush.RelativeTransform>
+                                <ImageBrush.Transform>
+                                    <TransformGroup>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="0"/>
+                                        <TranslateTransform Y="-5"/>
+                                    </TransformGroup>
+                                </ImageBrush.Transform>
+                            </ImageBrush>
+                        </Button.Background>
+                    </Button>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="ELibrary2021.Uc.ClassificationUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ELibrary2021.Uc"
+             mc:Ignorable="d" 
+             d:DesignHeight="275" d:DesignWidth="450" FlowDirection="RightToLeft">
+    <Grid Background="#FFCACACA">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="5" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="140" />
+            <ColumnDefinition Width="5" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="تصنيف الكتب" FontFamily="segui ui" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 180 0" FontWeight="ExtraLight"/>
+        <RadioButton x:Name="rdClass" Grid.Row="1" Grid.Column="1" Content="حسب الفئة" FontFamily="segui ui" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 180 0" FontWeight="Light" Checked="rdClass_Checked"/>
+        <ComboBox x:Name="cmboBookClass" IsEnabled="False" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Background="White"  HorizontalContentAlignment="Left" MinHeight="30" MinWidth="150" Margin="-300,0,0,0">
+            <CheckBox Content="احياء" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="تاريخ" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="جوغرافيا" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="تقنية" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="تكنولوجيا" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="علوم" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="فلسفة" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="لغة" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="دين" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="تحفيز" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="علوم نفس" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="تربية" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="اقتصاد" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="قصة" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="أدب" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="شعر" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="فيزياء" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="كيمياء" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="رياضة" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="ادرة" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="صناعة" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="هندسة" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="طب" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+            <CheckBox Content="أخرى" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+        </ComboBox>
+        <TextBlock x:Name="txtSelectedClasses" Grid.Row="1" Grid.Column="2" Margin="-0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" FontSize="12" FontWeight="ExtraLight"  />
+
+        <RadioButton x:Name="rdLang" Grid.Row="2" Grid.Column="1" Content="حسب اللغة" FontFamily="segui ui" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 180 0" FontWeight="Light" Checked="rdLang_Checked"/>
+        <ComboBox x:Name="cmboBookLang" IsEnabled="False" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Background="White"  HorizontalContentAlignment="Left" MinHeight="30" MinWidth="200" Margin="-250,0,0,0" >
+            <ListBoxItem Content="عربية"/>
+            <ListBoxItem Content="انجليزية"/>
+            <ListBoxItem Content="أخرى"/>
+        </ComboBox>
+        <Border  BorderBrush="#FFB09151" BorderThickness="1" CornerRadius="5" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" MinHeight="35" MinWidth="100" Margin="-100,0,0,0">
+            <Button x:Name="btnClass" Margin="0 0 0 0"  Content="تصنيف"  Padding="0 0 0 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="12" FontWeight="ExtraLight" Click="btnClass_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Border>
+        <Border  BorderBrush="#FFB09151" BorderThickness="1" CornerRadius="5" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" MinHeight="35" MinWidth="50" Margin="60,0,0,0">
+            <Button x:Name="btnCancel" Margin="0 0 0 0"  Content="ألغاء"  Padding="0 0 0 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="12" FontWeight="ExtraLight" Click="btnCancel_Click" >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Border>
+        
+    </Grid>
+</UserControl>

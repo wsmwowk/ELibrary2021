@@ -1,0 +1,87 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>library-icon-png-15.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Res\Add.png" />
+    <None Remove="Res\alert.png" />
+    <None Remove="Res\Arrow.png" />
+    <None Remove="Res\Background.jpg" />
+    <None Remove="Res\BooksCount.png" />
+    <None Remove="Res\CurrentUsers.png" />
+    <None Remove="Res\Dashboard.png" />
+    <None Remove="Res\Exit.png" />
+    <None Remove="Res\Filter.png" />
+    <None Remove="Res\Gbooks.png" />
+    <None Remove="Res\GivedBooks.png" />
+    <None Remove="Res\icons8_edit_property_96px.png" />
+    <None Remove="Res\library-icon-png-15.jpg" />
+    <None Remove="Res\Max.png" />
+    <None Remove="Res\Min.png" />
+    <None Remove="Res\print.png" />
+    <None Remove="Res\Rbooks.png" />
+    <None Remove="Res\ResetClassOrSearch.png" />
+    <None Remove="Res\RicevedBooks.png" />
+    <None Remove="Res\Search.png" />
+    <None Remove="Res\Settings.png" />
+    <None Remove="Res\SignOut.png" />
+    <None Remove="Res\Tasks.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Res\Add.png" />
+    <Resource Include="Res\alert.png" />
+    <Resource Include="Res\Arrow.png" />
+    <Resource Include="Res\Background.jpg" />
+    <Resource Include="Res\BooksCount.png" />
+    <Resource Include="Res\CurrentUsers.png" />
+    <Resource Include="Res\Dashboard.png" />
+    <Resource Include="Res\Exit.png" />
+    <Resource Include="Res\Filter.png" />
+    <Resource Include="Res\Gbooks.png" />
+    <Resource Include="Res\GivedBooks.png" />
+    <Resource Include="Res\icons8_edit_property_96px.png" />
+    <Resource Include="Res\library-icon-png-15.jpg" />
+    <Resource Include="Res\Max.png" />
+    <Resource Include="Res\Min.png" />
+    <Resource Include="Res\print.png" />
+    <Resource Include="Res\Rbooks.png" />
+    <Resource Include="Res\ResetClassOrSearch.png" />
+    <Resource Include="Res\RicevedBooks.png" />
+    <Resource Include="Res\Search.png" />
+    <Resource Include="Res\Settings.png" />
+    <Resource Include="Res\SignOut.png" />
+    <Resource Include="Res\Tasks.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings1.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
