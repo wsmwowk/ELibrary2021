@@ -10,7 +10,7 @@ namespace ELibrary2021.DataModel
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //Connection String
-            optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Elibrary2021;User ID=sa;Password=mkmk");
+            optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Elibrary2021;User ID=sa;Password=mkmk",sqlServerOptionsAction:sqloptions => sqloptions.EnableRetryOnFailure());
         }
 
         public DbSet<BooksModel> Books { get; set; }
